@@ -12,7 +12,9 @@ def home(request):
 
     latest_cars = Car.objects.all().order_by('-created')[:3]
 
-    context = {'featured': featured_cars, 'latest': latest_cars}
+    catch_user = request.user
+
+    context = {'featured': featured_cars, 'latest': latest_cars, 'user': catch_user }
 
     return render(request, 'home/homepage.html', context)
 
