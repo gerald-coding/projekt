@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listings</title>
+
+    {% extends 'base.html' %}
+
+    {% load static %}
+
+</head>
+<body>
+
+    {% block content %}
+
+        <h1>MY listings</h1>
+        <br>
+        <center><a href="{% url 'create_car' %}">List a vehicle</a></center>
+        <br><br>
+
+        <ul>
+            {% for car in cars %}
+                <li>
+                    <h3>{{ car.brand }} {{ car.car_model }}</h3>
+                    <img src="{{ MEDIA_URL }}{{ car.images.first.image_url }}" alt="image not found" width="200" height="200">
+                </li>
+                <br>
+                <a href="{% url 'update_car' car.id %}">Edit</a>
+                <a href="{% url 'delete_car' car.id %}">Delete</a>
+                <hr>
+            {% endfor %}
+        </ul>
+
+    {% endblock content %}
+
+</body>
+</html>

@@ -57,7 +57,7 @@
 								<div class="thumbnail_carousel" data-aos="fade-up" data-aos-delay="100">
 									<div class="item">
 										<div class="item_head">
-											<h4 class="item_title mb-0">Infiniti</h4>
+											<h4 class="item_title mb-0">{{ model.brand }} {{ model.car_model }}</h4>
 											<ul class="review_text ul_li_right clearfix">
 												<li class="text-right">
 													<strong>Super</strong>
@@ -66,13 +66,13 @@
 												<li><span class="bg_default_blue">4.8/5</span></li>
 											</ul>
 										</div>
-										<img src="{% static 'assets/images/gallery/img_07.jpg' %}" alt="image_not_found">
+										<img src="{{MEDIA_URL}}{{model.images.first.image_url}}" alt="image_not_found">
 										<ul class="btns_group ul_li_center clearfix">
 											<li>
-												<span class="custom_btn btn_width bg_default_blue"><del>$800/Day</del> $400/Day</span>
+												<span class="custom_btn btn_width bg_default_blue">${{ model.rent_price }}/Day</span>
 											</li>
 											<li>
-												<a href="#!" class="custom_btn btn_width bg_default_red text-uppercase">Book A Car <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></a>
+												<a href="{% url 'reservation' id=model.id %}" class="custom_btn btn_width bg_default_red text-uppercase">Book now<img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></a>
 											</li>
 										</ul>
 									</div>
@@ -248,13 +248,14 @@
 								<div class="testimonial_contants_wrap">
 									<h3 class="item_title mb_30" data-aos="fade-up" data-aos-delay="100">Recent Reviews:</h3>
 
+                                    {% for review in reviews %}
 									<div class="testimonial_item clearfix">
 										<div class="admin_info_wrap clearfix" data-aos="fade-up" data-aos-delay="200">
 											<div class="admin_image">
 												<img src="{% static 'assets/images/meta/img_01.png' %}" alt="image_not_found">
 											</div>
 											<div class="admin_content">
-												<h4 class="admin_name">Donovan Nordtrom</h4>
+												<h4 class="admin_name">{{ review.user }}</h4>
 												<ul class="rating_star ul_li clearfix">
 													<li class="active"><i class="fas fa-star"></i></li>
 													<li class="active"><i class="fas fa-star"></i></li>
@@ -264,8 +265,16 @@
 												</ul>
 											</div>
 										</div>
+                                        <p class="mb-0" data-aos="fade-up" data-aos-delay="300">
+											<b>Score:</b>
+                                            <br>
+                                            {{ review.score }}
+                                            <br>
+										</p>
 										<p class="mb-0" data-aos="fade-up" data-aos-delay="300">
-											“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
+                                            <b>Feedback:</b>
+                                            <br>
+											{{ review.feedback }}
 										</p>
 										<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -285,44 +294,20 @@
 											</div>
 										</div>
 									</div>
+                                    {% endfor %}
 
-									<div class="testimonial_item clearfix">
-										<div class="admin_info_wrap clearfix" data-aos="fade-up" data-aos-delay="100">
-											<div class="admin_image">
-												<img src="{% static 'assets/images/meta/img_01.png' %}" alt="image_not_found">
-											</div>
-											<div class="admin_content">
-												<h4 class="admin_name">Elisabeth Summers</h4>
-												<ul class="rating_star ul_li clearfix">
-													<li class="active"><i class="fas fa-star"></i></li>
-													<li class="active"><i class="fas fa-star"></i></li>
-													<li class="active"><i class="fas fa-star"></i></li>
-													<li class="active"><i class="fas fa-star"></i></li>
-													<li><i class="fas fa-star"></i></li>
-												</ul>
-											</div>
-										</div>
-										<p class="mb-0" data-aos="fade-up" data-aos-delay="200">
-											“Ut id lobortis eros, sed finibus dui. Cras eget purus lacus. Suspendisse sodales massa quis turpis ultrices ultricies. Cras euismod eros at vehicula sagittis. Suspendisse condimentum tortor nec enim pellentesque feugiat. Nulla tempor urna vitae sapien iaculis, auctor condimentum enim auctor”
-										</p>
-										<div class="row">
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="review_image" data-aos="fade-up" data-aos-delay="100">
-													<img src="{% static 'assets/images/testimonial/img_13.jpg' %}" alt="image_not_found">
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="review_image" data-aos="fade-up" data-aos-delay="200">
-													<img src="{% static 'assets/images/testimonial/img_14.jpg' %}" alt="image_not_found">
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-												<div class="review_image" data-aos="fade-up" data-aos-delay="300">
-													<img src="{% static 'assets/images/testimonial/img_15.jpg' %}" alt="image_not_found">
-												</div>
-											</div>
-										</div>
-									</div>
+                                    <br><br><br><br>
+
+                                    <div>
+                                        <form method="POST" action="">
+                                            {% csrf_token %}
+                                            {{ form.as_p }}
+
+                                            <input type="submit" value="Submit">
+
+                                        </form>
+                                    </div>
+                                    <br>
 								</div>
 							</div>
 						</div>

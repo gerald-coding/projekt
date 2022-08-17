@@ -30,7 +30,7 @@
 				<div class="main_slider clearfix">
 
                     {% for f_car in featured %}
-                        <div class="item has_overlay d-flex align-items-center" data-bg-image="assets/images/backgrounds/bg_02.jpg">
+                        <div class="item has_overlay d-flex align-items-center" data-bg-image="{{MEDIA_URL}}{{f_car.images.first.image_url}}">
                             <div class="overlay"></div>
                             <div class="container">
 
@@ -42,7 +42,7 @@
     {#											6.6L V8 32V DDI OHV Turbo Diesel, 5-Speed Automatic, Fuel Type: Diesel, Color: Black#}
     {#										</p>#}
                                             <div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">
-                                                <a class="custom_btn bg_default_red btn_width text-uppercase" href="">Book Now <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></a>
+                                                <a class="custom_btn bg_default_red btn_width text-uppercase" href="{%  url 'car_details' id=f_car.id %}">Book Now <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -64,51 +64,42 @@
 
 			<!-- search_section - start
 			================================================== -->
-			<section class="search_section clearfix">
-				<div class="container">
-					<div class="advance_search_form2" data-bg-color="#161829" data-aos="fade-up" data-aos-delay="100">
-						<form action="#">
-							<div class="row align-items-end">
-								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-									<div class="form_item">
-										<h4 class="input_title text-white">Pick Up Location</h4>
-										<div class="position-relative">
-											<input id="location_two" type="text" name="location" placeholder="City, State or Airport Code">
-											<label for="location_two" class="input_icon"><i class="fas fa-map-marker-alt"></i></label>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-									<div class="form_item">
-										<h4 class="input_title text-white">Pickup Date</h4>
-										<input type="date" name="date">
-									</div>
-								</div>
-
-                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-									<div class="form_item">
-										<h4 class="input_title text-white">Return Date</h4>
-										<input type="date" name="date">
-									</div>
-								</div>
-
-								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-									<div class="price-range-area clearfix">
-										<h4 class="input_title text-white">Price</h4>
-										<div id="slider-range" class="slider-range clearfix"></div>
-										<input class="price-text" type="text" id="amount" readonly>
-									</div>
-								</div>
-
-								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-									<button type="submit" class="custom_btn bg_default_red text-uppercase">Find A Car <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</section>
+{#			<section class="search_section clearfix">#}
+{#				<div class="container">#}
+{#					<div class="advance_search_form2" data-bg-color="#161829" data-aos="fade-up" data-aos-delay="100">#}
+{#						<form action="#">#}
+{#							<div class="row align-items-end">#}
+{##}
+{#								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">#}
+{#									<div class="form_item">#}
+{#										<h4 class="input_title text-white">Pickup Date</h4>#}
+{#										<input type="date" name="date">#}
+{#									</div>#}
+{#								</div>#}
+{##}
+{#                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">#}
+{#									<div class="form_item">#}
+{#										<h4 class="input_title text-white">Return Date</h4>#}
+{#										<input type="date" name="date">#}
+{#									</div>#}
+{#								</div>#}
+{##}
+{#								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">#}
+{#									<div class="price-range-area clearfix">#}
+{#										<h4 class="input_title text-white">Price</h4>#}
+{#										<div id="slider-range" class="slider-range clearfix"></div>#}
+{#										<input class="price-text" type="text" id="amount" readonly>#}
+{#									</div>#}
+{#								</div>#}
+{##}
+{#								<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">#}
+{#									<button type="submit" class="custom_btn bg_default_red text-uppercase">Find A Car <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></button>#}
+{#								</div>#}
+{#							</div>#}
+{#						</form>#}
+{#					</div>#}
+{#				</div>#}
+{#			</section>#}
 			<!-- search_section - end
 			================================================== -->
 
@@ -144,8 +135,8 @@
                                         </a>
                                     </h3>
                                     <div class="item_image position-relative">
-                                        <a class="image_wrap" href="#!">
-                                            <img src="{% static 'assets/images/feature/img_01.jpg' %}" alt="image_not_found">
+                                        <a class="image_wrap" href="{%  url 'car_details' id=l_car.id %}">
+                                            <img src="{{MEDIA_URL}}{{l_car.images.first.image_url}}" alt="image_not_found">
                                         </a>
                                         <span class="item_price bg_default_blue">${{ l_car.rent_price }}/Day</span>
                                     </div>

@@ -10,7 +10,7 @@ urlpatterns = [
     # path('', views.account, name="account"),
     # path('booking_list/', BookingListView, name="BookingListView"),
     path('profile/', views.view_profile,
-         name = 'profile'),
+         name= 'profile'),
     path('profile/edit_profile/', views.edit_profile,
          name='edit_profile'),
     path('register/', views.registerPage,
@@ -34,5 +34,9 @@ urlpatterns = [
     path('reset_password_complete/',
          auth_views.PasswordResetCompleteView.as_view(template_name="account/password_reset_done.html"),
          name="password_reset_complete"),
+    path('account/my_listings/', views.my_listings, name="my_listings"),
+    path('account/my_listings/list_a_car/', views.create_car, name='create_car'),
+    path('account/my_listings/update_car/<int:id>', views.update_car, name='update_car'),
+    path('account/my_listings/delete_car/<int:id>', views.delete_car, name='delete_car'),
 
 ]

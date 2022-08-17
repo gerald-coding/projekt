@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+		<title>Reservation - Rotors - Car Rental HTML5 Template</title>
+
+        {% extends 'base.html' %}
+
+        {% load static %}
+
+	</head>
+
+	<body>
+
+    {% block content %}
+
+		<!-- main body - start
+		================================================== -->
+		<main>
+
+
+			<!-- breadcrumb_section - start
+			================================================== -->
+			<section class="breadcrumb_section text-center clearfix">
+				<div class="page_title_area has_overlay d-flex align-items-center clearfix" data-bg-image="assets/images/breadcrumb/bg_03.jpg">
+					<div class="overlay"></div>
+					<div class="container" data-aos="fade-up" data-aos-delay="100">
+						<h1 class="page_title text-white mb-0">Reservation</h1>
+					</div>
+				</div>
+				<div class="breadcrumb_nav clearfix" data-bg-color="#F2F2F2">
+					<div class="container">
+						<ul class="ul_li clearfix">
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li><a href="{% url 'car' %}">Our Cars</a></li>
+							<li>Reservation</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<!-- breadcrumb_section - end
+			================================================== -->
+
+
+			<!-- reservation_section - start
+			================================================== -->
+			<section class="reservation_section sec_ptb_100 clearfix">
+				<div class="container">
+					<div class="row justify-content-lg-between justify-content-md-center justify-content-sm-center">
+
+						<div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
+							<div class="feature_vehicle_item mt-0 ml-0" data-aos="fade-up" data-aos-delay="100">
+								<h3 class="item_title mb-0">
+									<a href="#!">
+										{{ car_brand }} {{ car_model }}
+									</a>
+								</h3>
+								<div class="item_image position-relative">
+									<a class="image_wrap" href="#!">
+										<img src="{{MEDIA_URL}}{{car.images.first.image_url}}" alt="image_not_found">
+									</a>
+									<span class="item_price bg_default_blue">${{ car_rent_price }}/Day</span>
+								</div>
+								<ul class="info_list ul_li_center clearfix">
+									<li>{{ car_type }}</li>
+									<li>{{ car_transmission }}</li>
+									<li>{{ car_seats }} Seats</li>
+									<li>{{ car_fuel }}</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+							<div class="reservation_form">
+								<form action="" method="POST">
+                                    {% csrf_token %}
+									<div class="row">
+                                        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+											<div class="form_item" data-aos="fade-up" data-aos-delay="100">
+                                                 <p>
+                                                    <label class="input_title" for="id_location">Pickup Location</label>
+                                                     <div class="position-relative">
+                                                        <select name="location" required id="id_location">
+                                                            <option value="Tirana_international_airport">Tirana International Airport</option>
+                                                            <option value="Tirana_city_center">Tirana City Centre</option>
+                                                            <option value="Durres_port">Durres Sea Port</option>
+                                                        </select>
+                                                    </div>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form_item" data-aos="fade-up" data-aos-delay="200">
+                                                <p>
+                                                    <label class="input_title" for="id_pickup_date">Pickup Date</label>
+                                                    <input type="datetime-local" name="pickup_date" required id="id_pickup_date">
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form_item" data-aos="fade-up" data-aos-delay="200">
+                                                <p>
+                                                    <label class="input_title" for="id_return_date">Return Date</label>
+                                                    <input type="datetime-local" name="return_date" required id="id_return_date">
+                                                </p>
+                                            </div>
+                                        </div>
+									</div>
+
+									<div class="reservation_customer_details">
+
+										<hr data-aos="fade-up" data-aos-delay="200">
+
+										<div class="row align-items-center justify-content-lg-between">
+											<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="300">
+												<button type="submit" class="custom_btn bg_default_red text-uppercase">Book Now <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+{#                <div>#}
+{#                    <form action="" method="POST">#}
+{#                        {{ form.as_p }}#}
+{#                        {% csrf_token %}#}
+{#                        <button type="submit">Book this car</button>#}
+{#                    </form>#}
+{#                </div>#}
+			</section>
+			<!-- reservation_section - end
+			================================================== -->
+
+
+		</main>
+		<!-- main body - end
+		================================================== -->
+
+    {% endblock content %}
+
+	</body>
+</html>
+
+

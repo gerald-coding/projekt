@@ -59,129 +59,68 @@
 								</div>
 								<div class="sb_widget">
 									<form action="#">
-										<div class="sb_widget price-range-area clearfix" data-aos="fade-up" data-aos-delay="100">
-											<h4 class="input_title">Price</h4>
-											<div id="slider-range" class="slider-range clearfix"></div>
-											<input class="price-text" type="text" id="amount" readonly>
-										</div>
+										<div class="form_item">
+												<h4 class="input_title">Price</h4>
+												<input type="number" name="search_rent_price">
+											</div>
 
 										<div class="sb_widget car_picking" data-aos="fade-up" data-aos-delay="100">
-											<div class="form_item">
-												<h4 class="input_title">Pick Up Location</h4>
-												<div class="position-relative">
-													<input id="location_two" type="text" name="location" placeholder="City, State or Airport Code">
-													<label for="location_two" class="input_icon"><i class="fas fa-map-marker-alt"></i></label>
-												</div>
+
+{#                                            <div class="form_item">#}
+{#												<h4 class="input_title">Pickup</h4>#}
+{#												<input type="date" name="search_pickup">#}
+{#											</div>#}
+{##}
+{#                                            <div class="form_item">#}
+{#												<h4 class="input_title">Return Date</h4>#}
+{#												<input type="date" name="search_return">#}
+{#											</div>#}
+
+                                            <div class="form_item">
+												<h4 class="input_title">Brand</h4>
+												<input type="text" name="search_brand">
 											</div>
 
 											<div class="form_item">
-												<h4 class="input_title">Pick A Date</h4>
-												<input type="date" name="date">
+												<h4 class="input_title">Year</h4>
+												<input type="number" name="search_year">
 											</div>
+
 										</div>
 
 										<div class="sb_widget" data-aos="fade-up" data-aos-delay="100">
-											<div class="checkbox_input">
-												<label for="return_checkbox"><input type="checkbox" id="return_checkbox"> Return car to a different location</label>
+											<h4 class="input_title">Transmission:</h4>
+											<div class="form_item">
+                                                <select name="search_transmission" id="search_transmission">
+                                                        <option></option>
+                                                        <option value="Automatic">Automatic</option>
+                                                        <option value="Manual">Manual</option>
+                                                </select>
+                                                <br>
 											</div>
-										</div>
 
 										<div class="sb_widget" data-aos="fade-up" data-aos-delay="100">
-											<h4 class="input_title">Number of passengers:</h4>
-											<div class="row">
-												<div class="col-lg-6">
-													<div class="checkbox_input">
-														<label for="passengers_radio1"><input type="radio" id="passengers_radio1" name="passengers" checked> 2</label>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="checkbox_input">
-														<label for="passengers_radio2"><input type="radio" id="passengers_radio2" name="passengers"> 5</label>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="checkbox_input">
-														<label for="passengers_radio3"><input type="radio" id="passengers_radio3" name="passengers"> 4</label>
-													</div>
-												</div>
-												<div class="col-lg-6">
-													<div class="checkbox_input">
-														<label for="passengers_radio4"><input type="radio" id="passengers_radio4" name="passengers"> 7 or more</label>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="sb_widget" data-aos="fade-up" data-aos-delay="100">
+                                            <h4 class="input_title">Seats:</h4>
 											<div class="form_item">
 												<select>
-													<option data-display="Gearbox type">Select A Option</option>
-													<option value="1">Option 1</option>
-													<option value="2">Option 2</option>
-													<option value="3" disabled>Option 3</option>
-													<option value="4">Option 4</option>
+                                                    <option></option>
+													<option value="1">2</option>
+													<option value="2">4</option>
+													<option value="3">5</option>
+													<option value="4">6</option>
+													<option value="4">7</option>
+													<option value="4">8</option>
+													<option value="4">10</option>
 												</select>
 											</div>
-
-											<div class="form_item">
-												<select>
-													<option data-display="Fuel type">Select A Option</option>
-													<option value="1">Option 1</option>
-													<option value="2">Option 2</option>
-													<option value="3" disabled>Option 3</option>
-													<option value="4">Option 4</option>
-												</select>
-											</div>
-
-											<div class="form_item">
-												<select>
-													<option data-display="Luggage space options">Select A Option</option>
-													<option value="1">Option 1</option>
-													<option value="2">Option 2</option>
-													<option value="3" disabled>Option 3</option>
-													<option value="4">Option 4</option>
-												</select>
-											</div>
-
-											<div class="form_item">
-												<select>
-													<option data-display="Model Type">Select A Option</option>
-													<option value="1">Option 1</option>
-													<option value="2">Option 2</option>
-													<option value="3" disabled>Option 3</option>
-													<option value="4">Option 4</option>
-												</select>
-											</div>
-										</div>
-
-										<div class="sb_widget sb_additional_options" data-aos="fade-up" data-aos-delay="100">
-											<h4 class="input_title">Additional Options:</h4>
-											<div class="checkbox_input">
-												<label for="child_seat"><input type="checkbox" id="child_seat"> Child seat</label>
-											</div>
-
-											<div class="checkbox_input">
-												<label for="air_conditioning"><input type="checkbox" id="air_conditioning"> Air conditioning</label>
-											</div>
-
-											<div class="checkbox_input">
-												<label for="chauffeur_services"><input type="checkbox" id="chauffeur_services"> Chauffeur services</label>
-											</div>
-
-											<div class="checkbox_input">
-												<label for="winter_equipment"><input type="checkbox" id="winter_equipment"> Winter Equipment</label>
-											</div>
-
-											<div class="checkbox_input">
-												<label for="premium_sound_system"><input type="checkbox" id="premium_sound_system"> Premium Sound System</label>
-											</div>
-										</div>
 
 										<hr data-aos="fade-up" data-aos-delay="100">
 
 										<div data-aos="fade-up" data-aos-delay="100">
 											<button type="submit" class="custom_btn bg_default_red text-uppercase">Apply Filters <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></button>
 										</div>
+                                        </div>
+            </div>
 									</form>
 								</div>
 							</aside>
@@ -193,172 +132,90 @@
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<span class="item_available">Available offers 26</span>
 									</div>
-
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<form action="#">
-											<div class="form_item mb-0">
-												<select>
-													<option data-display="Short By">Select A Option</option>
-													<option value="1" selected>Default Sorthing</option>
-													<option value="2">Another option</option>
-													<option value="3" disabled>A disabled option</option>
-													<option value="4">Potato</option>
-												</select>
-											</div>
-										</form>
-									</div>
 								</div>
 							</div>
 
 							<div class="row">
+                                {% for car in c_list %}
 								<div class="col-lg-6 col-md-6">
 									<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
 										<h3 class="item_title mb-0">
-											<a href="#!">
-												2015 Chevrolet Corvette Stingray Z51
+											<a href="{%  url 'car_details' id=car.id %}">
+												{{ car.brand }} {{ car.car_model }}
 											</a>
 										</h3>
 										<div class="item_image position-relative">
-											<a class="image_wrap" href="#!">
-												<img src="{% static 'assets/images/feature/img_08.jpg' %}" alt="image_not_found">
+											<a class="image_wrap" href="{%  url 'car_details' id=car.id %}">
+												<img src="{{MEDIA_URL}}{{car.images.first.image_url}}" alt="image_not_found">
 											</a>
-											<span class="item_price bg_default_blue">$230/Day</span>
+											<span class="item_price bg_default_blue">${{ car.rent_price }}/Day</span>
 										</div>
 										<ul class="info_list ul_li_center clearfix">
-											<li>Sports</li>
-											<li>Auto</li>
-											<li>2 Passengers</li>
-											<li>Gasoline</li>
+											<li>{{ car.type }}</li>
+											<li>{{ car.transmission }}</li>
+											<li>{{ car.seats }} seats</li>
+											<li>{{ car.fuel }}</li>
 										</ul>
 									</div>
+                                </div>
+                                {% endfor %}
 								</div>
-
-								<div class="col-lg-6 col-md-6">
-									<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="300">
-										<h3 class="item_title mb-0">
-											<a href="#!">
-												2019 Chevrolet Corvette Stingray Red
-											</a>
-										</h3>
-										<div class="item_image position-relative">
-											<a class="image_wrap" href="#!">
-												<img src="{% static 'assets/images/feature/img_02.jpg' %}" alt="image_not_found">
-											</a>
-											<span class="item_price bg_default_blue">$230/Day</span>
-										</div>
-										<ul class="info_list ul_li_center clearfix">
-											<li>Sports</li>
-											<li>Auto</li>
-											<li>2 Passengers</li>
-											<li>Hybrid</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-lg-6 col-md-6">
-									<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
-										<h3 class="item_title mb-0">
-											<a href="#!">
-												2015 Chevrolet Corvette Stingray Z51
-											</a>
-										</h3>
-										<div class="item_image position-relative">
-											<a class="image_wrap" href="#!">
-												<img src="{% static 'assets/images/feature/img_09.jpg' %}" alt="image_not_found">
-											</a>
-											<span class="item_price bg_default_blue">$120/Day</span>
-										</div>
-										<ul class="info_list ul_li_center clearfix">
-											<li>Sports</li>
-											<li>Auto</li>
-											<li>2 Passengers</li>
-											<li>Gasoline</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-lg-6 col-md-6">
-									<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="300">
-										<h3 class="item_title mb-0">
-											<a href="#!">
-												2020 Audi New Generation P00234
-											</a>
-										</h3>
-										<div class="item_image position-relative">
-											<a class="image_wrap" href="#!">
-												<img src="{% static 'assets/images/feature/img_03.jpg' %}" alt="image_not_found">
-											</a>
-											<span class="item_price bg_default_blue">$230/Day</span>
-										</div>
-										<ul class="info_list ul_li_center clearfix">
-											<li>Sports</li>
-											<li>Auto</li>
-											<li>2 Passengers</li>
-											<li>Electro</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-lg-6 col-md-6">
-									<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
-										<h3 class="item_title mb-0">
-											<a href="#!">
-												2015 Chevrolet Corvette Stingray Z51
-											</a>
-										</h3>
-										<div class="item_image position-relative">
-											<a class="image_wrap" href="#!">
-												<img src="{% static 'assets/images/feature/img_06.jpg' %}" alt="image_not_found">
-											</a>
-											<span class="item_price bg_default_blue">$160/Day</span>
-										</div>
-										<ul class="info_list ul_li_center clearfix">
-											<li>Sports</li>
-											<li>Auto</li>
-											<li>2 Passengers</li>
-											<li>Gasoline</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-lg-6 col-md-6">
-									<div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="300">
-										<h3 class="item_title mb-0">
-											<a href="#!">
-												2015 Chevrolet Corvette Stingray Z51
-											</a>
-										</h3>
-										<div class="item_image position-relative">
-											<a class="image_wrap" href="#!">
-												<img src="{% static 'assets/images/feature/img_01.jpg' %}" alt="image_not_found">
-											</a>
-											<span class="item_price bg_default_blue">$230/Day</span>
-										</div>
-										<ul class="info_list ul_li_center clearfix">
-											<li>Sports</li>
-											<li>Auto</li>
-											<li>2 Passengers</li>
-											<li>Hybrid</li>
-										</ul>
-									</div>
-								</div>	
-							</div>
 
 							<div class="pagination_wrap clearfix" data-aos="fade-up" data-aos-delay="100">
 								<div class="row align-items-center justify-content-lg-between">
-									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-										<span class="page_number">Page 1 of 3</span>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<span class="page_number">
+                                            {% if c_list.has_previous %}
+                                                <a href="?page=1
+                                                    {% if search_brand %}&search_brand={{ search_brand }}{% endif %}
+                                                    {% if search_year %}&search_year={{ search_year }}{% endif %}
+                                                    {% if search_seats %}&search_seats={{ search_seats }}{% endif %}
+                                                    {% if search_transmission %}&search_transmission={{ search_transmission }}{% endif %}
+                                                    {% if search_rent_price %}&search_rent_price={{ search_rentprice }}{% endif %}">
+                                                    &laquo; First
+                                                </a>
+                                                <a href="?page={{ c_list.previous_page_number }}
+                                                    {% if search_brand %}&search_brand={{ search_brand }}{% endif %}
+                                                    {% if search_year %}&search_year={{ search_year }}{% endif %}
+                                                    {% if search_seats %}&search_seats={{ search_seats }}{% endif %}
+                                                    {% if search_transmission %}&search_transmission={{ search_transmission }}{% endif %}
+                                                    {% if search_rent_price %}&search_rent_price={{ search_rentprice }}{% endif %}">
+                                                    Previous
+                                                </a>
+                                            {% endif %}
+                                        </span>
 									</div>
 
 									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-										<ul class="pagination_nav ul_li_right clearfix">
-											<li><a href="#!"><i class="fal fa-angle-double-left"></i></a></li>
-											<li class="active"><a href="#!">1</a></li>
-											<li><a href="#!">2</a></li>
-											<li><a href="#!">3</a></li>
-											<li><a href="#!"><i class="fal fa-angle-double-right"></i></a></li>
-										</ul>
+										<span class="page_number">
+                                            Page {{ c_list.number }} of {{ c_list.paginator.num_pages }}
+                                        </span>
 									</div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<span class="page_number">
+                                            {% if c_list.has_next %}
+                                                <a href="?page={{ c_list.next_page_number }}
+                                                    {% if search_brand %}&search_brand={{ search_brand }}{% endif %}
+                                                    {% if search_year %}&search_year={{ search_year }}{% endif %}
+                                                    {% if search_seats %}&search_seats={{ search_seats }}{% endif %}
+                                                    {% if search_transmission %}&search_transmission={{ search_transmission }}{% endif %}
+                                                    {% if search_rent_price %}&search_rent_price={{ search_rentprice }}{% endif %}">
+                                                    Next
+                                                </a>
+                                                <a href="?page={{ c_list.paginator.num_pages }}
+                                                    {% if search_brand %}&search_brand={{ search_brand }}{% endif %}
+                                                    {% if search_year %}&search_year={{ search_year }}{% endif %}
+                                                    {% if search_seats %}&search_seats={{ search_seats }}{% endif %}
+                                                    {% if search_transmission %}&search_transmission={{ search_transmission }}{% endif %}
+                                                    {% if search_rent_price %}&search_rent_price={{ search_rentprice }}{% endif %}">
+                                                    Last &raquo;
+                                                </a>
+                                            {% endif %}
+                                        </span>
+									</div>
+
 								</div>
 							</div>
 						</div>
@@ -366,6 +223,7 @@
 					</div>
 				</div>
 			</div>
+
 			<!-- car_section - end
 			================================================== -->
 

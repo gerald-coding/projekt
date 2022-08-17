@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -6,7 +7,7 @@ from django.shortcuts import redirect
 from django.db import IntegrityError
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserCreateForm, EditProfileForm
+from .forms import UserCreateForm, EditProfileForm, CarForm
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_users, admin_only
 # from car_models.views import BookingList
@@ -77,7 +78,11 @@ def loginPage(request):
 
 
 def view_profile(request):
-    args = {'user': request.user}
+
+    booking_history = Booking.objects.filter(car__owner_id=request.user)
+
+    args = {'user': request.user, 'booking_history': booking_history}
+
     return render(request, 'account/profile.html', args)
 
 
@@ -91,3 +96,60 @@ def edit_profile(request):
         form = EditProfileForm(instance=request.user)
         args = {'form': form}
         return render(request, 'account/edit_profile.html', args)
+
+
+# CRUD for Car listings start here
+@login_required(login_url='login')
+def create_car(request):
+
+    form = CarForm()
+    if request.method == 'POST':
+        form = CarForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+
+    context = {'form': form, 'owner': request.user}
+    return render(request, 'account/car_form.html', context)
+
+
+@login_required(login_url='login')
+def update_car(request, id):
+
+    car = Car.objects.get(id=id)
+    form = CarForm(instance=car)
+
+    if request.user != car.owner:
+        return HttpResponse('You are not allowed to update this car')
+
+    if request.method == 'POST':
+        form = CarForm(request.POST, instance=car)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+
+    context = {'form': form}
+    return render(request, 'account/car_form.html', context)
+
+
+@login_required(login_url='login')
+def delete_car(request, id):
+
+    car = Car.objects.get(id=id)
+
+    if request.user != car.owner:
+        return HttpResponse('You are not allowed to delete this car')
+
+    if request.method == 'POST':
+        car.delete()
+        return redirect('profile')
+    return render(request, 'account/delete_car_form.html', {'obj': car})
+# CRUD views for Car listings end here
+
+
+def my_listings(request):
+
+    cars = Car.objects.filter(owner=request.user)
+
+    context = {'cars': cars}
+    return render(request, 'account/my_listings.html', context)

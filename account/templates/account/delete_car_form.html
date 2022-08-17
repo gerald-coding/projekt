@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Deletion form</title>
+
+    {% extends 'base.html' %}
+
+    {% load static %}
+
+</head>
+<body>
+
+{% block content %}
+
+    <br><br><br><br>
+
+    <div>
+        <form method="POST" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ obj }}"?</p>
+        <a href="{% url 'my_listings' %}">Go Back</a>
+        <input type="submit" value="Confirm">
+    </form>
+    </div>
+
+    <br>
+
+{% endblock content %}
+
+</body>
+</html>

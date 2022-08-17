@@ -13,6 +13,7 @@
 
         {% load static %}
 
+
 	</head>
 
 
@@ -67,6 +68,9 @@
 									<li>
 										<a data-toggle="tab" href="#history_tab"><i class="fas fa-file-alt"></i> Booking History</a>
 									</li>
+                                    <li>
+										<a href="{% url 'my_listings' %}"><i class="fas fa-file-alt"></i> My Listings</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -88,11 +92,25 @@
 									<div class="account_info_list" data-aos="fade-up" data-aos-delay="500">
 										<h3 class="list_title mb_30">Booking History:</h3>
 										<ul class="ul_li_block clearfix">
-											<li><span>Upcoming Reservations:</span>
-                                                {% for booking in booking_list %}
-                                                   <h2>{{ booking }}</h2>
-                                                {% endfor %}
-                                                No Reservations Yet</li>
+											<li>
+                                                <span>Upcoming Reservations:</span>
+                                                    {% if booking_history.count > 0 %}
+                                                        {% for booking in booking_history %}
+                                                            <div>
+                                                                <h2>{{ booking.car_customer }}</h2>
+                                                                <p>{{ booking.car }}</p>
+                                                                <p>{{ booking.pickup_location }}</p>
+                                                                <p>{{ booking.pickup_date }}</p>
+                                                                <p>{{ booking.return_date }}</p>
+                                                            </div>
+                                                           <div>
+                                                                <img src="{{ MEDIA_URL }}{{ booking.car.images.first.image_url }}" alt="no image found" width="200" height="200">
+                                                           </div>
+                                                            <hr>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                    No Reservations Yet</li>
+                                                    {% endif %}
 											<li><span>Past Rentals:</span> 0</li>
 										</ul>
 									</div>

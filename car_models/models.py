@@ -16,7 +16,7 @@ class Car(models.Model):
     transmission = models.CharField(max_length=100)
     fuel = models.CharField(max_length=100)
     rent_price = models.IntegerField()
-    featured = models.BooleanField()
+    featured = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -25,11 +25,11 @@ class Car(models.Model):
 
 
 class Image(models.Model):
-    car_i = models.ForeignKey(Car, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='images')
     image_url = models.ImageField(null=True, blank=True, upload_to="cars/images/")
 
     def __str__(self):
-        return f"{self.car_i.brand} {self.car_i.car_model} - image {self.id}"
+        return f"{self.car.brand} {self.car.car_model} - image {self.id}"
 
 
 class Review(models.Model):
@@ -50,12 +50,12 @@ class Booking(models.Model):
     car_customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     car = models.ForeignKey(Car, on_delete=models.SET_NULL, null=True)
     pickup_location = models.CharField(max_length=100, default='Tirane', null=True)
-    pickup_date = models.DateField()
-    return_date = models.DateField()
-    price = models.IntegerField()
+    pickup_date = models.DateTimeField()
+    return_date = models.DateTimeField()
+    # price = models.IntegerField()
     status = models.CharField(max_length=20, default='pending', null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.car.brand} {self.car.car_model}"
+        return f"{self.car.brand} {self.car.car_model} was booked by {self.car_customer} in {self.pickup_date} at {self.pickup_location}"

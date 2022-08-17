@@ -81,6 +81,16 @@
 									<div class="row">
 										<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
 											<div class="form_item" data-aos="fade-up" data-aos-delay="100">
+                                                <p>
+                                                    <label class="input_title" for="id_location">Pickup Location</label>
+                                                    <div>
+                                                        <select name="location" required id="id_location">
+                                                            <option value="Tirana_international_airport">Tirana International Airport</option>
+                                                            <option value="Tirana_city_center">Tirana City Centre</option>
+                                                            <option value="Durres_port">Durres Sea Port</option>
+                                                        </select>
+                                                    </div>
+                                                </p>
 												<h4 class="input_title">Pick Up Location</h4>
 												<div class="position-relative">
 													<input id="location_two" type="text" name="location" placeholder="86 Albert Road, London, N51 4VK">
@@ -128,15 +138,15 @@
 										</div>
 									</div>
 
-									<hr class="mt-0" data-aos="fade-up" data-aos-delay="700"
+									<hr class="mt-0" data-aos="fade-up" data-aos-delay="700">
 
 									<hr class="mt-0" data-aos="fade-up" data-aos-delay="100">
 
-									<div class="reservation_customer_details
+									<div class="reservation_customer_details">
 
 										<hr data-aos="fade-up" data-aos-delay="200">
 
-										<div class="row align-items-center justify-content-lg-between
+										<div class="row align-items-center justify-content-lg-between">
 											<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="300">
 												<button type="submit" class="custom_btn bg_default_red text-uppercase">Reservation Now <img src="{% static 'assets/images/icons/icon_01.png' %}" alt="icon_not_found"></button>
 											</div>
@@ -161,3 +171,30 @@
 		
 	</body>
 </html>
+
+
+<div>
+                <h2>Reservation Form</h2>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p>
+                        <label for="id_pickup_date">Pickup Date</label>
+                        <input type="datetime-local" name="pickup_date" required id="id_pickup_date">
+                    </p>
+                    <p>
+                        <label for="id_return_date">Return Date</label>
+                        <input type="datetime-local" name="return_date" required id="id_return_date">
+                    </p>
+                    <p>
+                        <label for="id_location">Pickup Location</label>
+                        <select name="location" required id="id_location">
+                            <option value="Tirana_international_airport">Tirana International Airport</option>
+                            <option value="Tirana_city_center">Tirana City Centre</option>
+                            <option value="Durres_port">Durres Sea Port</option>
+                        </select>
+                    </p>
+                    <button type="submit">Book</button>
+                    <br> <br> <br> <br> <br> <br>
+
+                </form>
+            </div>
