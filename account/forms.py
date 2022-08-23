@@ -32,7 +32,22 @@ class CarForm(ModelForm):
         fields = ['brand', 'car_model', 'type', 'year', 'engine', 'seats', 'transmission', 'fuel', 'rent_price']
 
 
-class ImageForm(ModelForm):
-    class Meta:
-        model = Image
-        fields = []
+# class ImageFormOne(ModelForm):
+#     class Meta:
+#         model = Image
+#         fields = ['image_url']
+#
+#
+# class ImageFormTwo(ModelForm):
+#     class Meta:
+#         model = Image
+#         fields = ['image_url']
+#         widgets = {
+#             'image_url': forms.FileInput(attrs={'name': 'image_url_one'})
+#         }
+#
+#
+# class ImageFormThree(ModelForm):
+#     class Meta:
+#         model = Image
+#         fields = ['image_url']

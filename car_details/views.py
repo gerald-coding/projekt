@@ -10,9 +10,10 @@ from .forms import ReviewForm
 def car_details(request, id):
 
     car = Car.objects.get(id=id)
+    images = Image.objects.filter(car=car)
     reviews = Review.objects.filter(car_id=car.id)
 
-    context = {'model': car, 'reviews': reviews}
+    context = {'model': car, 'reviews': reviews, 'images': images}
 
     return render(request, 'car_details/car_details.html', context)
 

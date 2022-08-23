@@ -5,7 +5,6 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 
-
 urlpatterns = [
     # path('', views.account, name="account"),
     # path('booking_list/', BookingListView, name="BookingListView"),
@@ -36,7 +35,7 @@ urlpatterns = [
          name="password_reset_complete"),
     path('account/my_listings/', views.my_listings, name="my_listings"),
     path('account/my_listings/list_a_car/', views.create_car, name='create_car'),
-    path('account/my_listings/update_car/<int:id>', views.update_car, name='update_car'),
-    path('account/my_listings/delete_car/<int:id>', views.delete_car, name='delete_car'),
+    path('account/my_listings/update_car/<int:id>/', views.update_car, name='update_car'),
+    path('account/my_listings/delete_car/<int:id>/', views.delete_car, name='delete_car'),
 
 ]
