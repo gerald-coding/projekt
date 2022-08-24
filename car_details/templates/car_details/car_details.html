@@ -282,6 +282,11 @@
                                             <br>
 											{{ review.feedback }}
 										</p>
+                                        {% if user == review.user %}
+                                            <br>
+                                            <a href="{% url 'update_review' id=review.id %}">Edit</a>
+                                            <a href="{% url 'delete_review' id=review.id %}">Delete</a>
+                                        {% endif %}
 										<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 												<div class="review_image" data-aos="fade-up" data-aos-delay="100">
@@ -299,31 +304,35 @@
 												</div>
 											</div>
 										</div>
+
 									</div>
                                     {% endfor %}
 
                                     <div>
-                                        <form method="POST" action="">
-                                            {% csrf_token %}
+{#                                        <form method="POST" action="">#}
+{#                                            {% csrf_token %}#}
 {#                                            {{ form.as_p }}#}
+{##}
+{#                                            <br>#}
+{##}
+{#                                            <label for="id_feedback">Feedback: </label>#}
+{#                                            <input type="text" name="feedback" id="id_feedback">#}
+{##}
+{#                                            <br>#}
+{##}
+{#                                            <label for="id_score">Score: </label>#}
+{#                                            <input type="number" name="score" id="id_score">#}
+{##}
+{#                                            <br><br>#}
+{##}
+{#                                            <input type="submit" value="Submit">#}
+{##}
+{#                                            <br>#}
+{##}
+{#                                        </form>#}
 
-                                            <br>
+                                        <a href="{% url 'review' id=model.id %}">Leave review</a>
 
-                                            <label for="id_feedback">Feedback: </label>
-                                            <input type="text" name="feedback" id="id_feedback">
-
-                                            <br>
-
-                                            <label for="id_score">Score: </label>
-                                            <input type="number" name="score" id="id_score">
-
-                                            <br><br>
-
-                                            <input type="submit" value="Submit">
-
-                                            <br>
-
-                                        </form>
                                     </div>
                                     <br>
 								</div>
