@@ -144,7 +144,12 @@ def create_car(request):
 def update_car(request, id):
 
     car = Car.objects.get(id=id)
-    form = CarForm(instance=car)
+    imgs = Image.objects.filter(car_id=car.id)
+    img_1 = imgs[0].id
+    img_2 = imgs[1].id
+    img_3 = imgs[2].id
+
+    form_0 = CarForm(instance=car)
     img_one = request.FILES.get('image_url_one')
     img_two = request.FILES.get('image_url_two')
     img_three = request.FILES.get('image_url_three')
@@ -153,14 +158,28 @@ def update_car(request, id):
         return HttpResponse('You are not allowed to update this car')
 
     if request.method == 'POST':
-        form = CarForm(request.POST, instance=car)
-        if form.is_valid():
-            form.save()
-        car_images = Image.objects.filter(car=car)
-        if img_one != '' and img_one is not None:
-            return redirect('profile')
+        form_0 = CarForm(request.POST, instance=car)
+        if form_0.is_valid():
+            form_0.save()
 
-    context = {'form': form}
+        a = Image.objects.get(id=img_1)
+        if img_one != '' and img_one is not None:
+            a.image_url = img_one
+            a.save()
+
+        b = Image.objects.get(id=img_2)
+        if img_two != '' and img_two is not None:
+            b.image_url = img_two
+            b.save()
+
+        c = Image.objects.get(id=img_3)
+        if img_one != '' and img_one is not None:
+            c.image_url = img_three
+            c.save()
+
+        return redirect('profile')
+
+    context = {'form_0': form_0}
     return render(request, 'account/car_form.html', context)
 
 

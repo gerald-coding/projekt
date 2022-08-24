@@ -26,7 +26,7 @@ class Car(models.Model):
 
 class Image(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='images')
-    image_url = models.ImageField(null=True, blank=True, upload_to="cars/images/")
+    image_url = models.ImageField(null=True, upload_to="cars/images/")
 
     def __str__(self):
         return f"{self.car.brand} {self.car.car_model} - image {self.id}"

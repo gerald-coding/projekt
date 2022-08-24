@@ -19,17 +19,26 @@ def car_details(request, id):
 
 
 @login_required(login_url='login')
-def review(request):
+def review(request, id):
 
-    form = ReviewForm()
+    user = request.user
+    car = Car.objects.get(id=id)
+
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            form.save()
+        feedback = request.POST.get('feedback')
+        score = request.POST.get('score')
+        if feedback != '' and feedback is not None and score != '' and score is not None:
+            review = Review.objects.create(
+                user=user,
+                car=car,
+                feedback=feedback,
+                score=score,
+            )
+            review.save()
             return redirect('car_details')
 
-    context = {'form': form}
-    return render(request, 'car_details/car_details.html', context)
+    # context = {'form': form}
+    return render(request, 'car_details/car_details.html')
 
 
 @login_required(login_url='login')

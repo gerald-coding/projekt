@@ -302,14 +302,26 @@
 									</div>
                                     {% endfor %}
 
-                                    <br><br><br><br>
-
                                     <div>
                                         <form method="POST" action="">
                                             {% csrf_token %}
-                                            {{ form.as_p }}
+{#                                            {{ form.as_p }}#}
+
+                                            <br>
+
+                                            <label for="id_feedback">Feedback: </label>
+                                            <input type="text" name="feedback" id="id_feedback">
+
+                                            <br>
+
+                                            <label for="id_score">Score: </label>
+                                            <input type="number" name="score" id="id_score">
+
+                                            <br><br>
 
                                             <input type="submit" value="Submit">
+
+                                            <br>
 
                                         </form>
                                     </div>
@@ -323,7 +335,6 @@
 			</div>
 			<!-- details_section - end
 			================================================== -->
-
 
 		</main>
 		<!-- main body - end
